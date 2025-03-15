@@ -1,0 +1,24 @@
+administrator@Wrk1:~# su -root
+Password:
+[root@Wrk1 ~]# passwd rcronn -l 
+Locking password for user rcronn. 
+passwd: Success
+[root@Wrk1 ~]# cp /home/rcronn/project_prcc/welcome /home/cflynn
+[root@Wrk1 ~]# cp /home/rcronn/project_prcc/team_directory /home/cflynn
+[root@Wrk1 ~]# mv /home/rcronn/project_prcc /home/mbrown
+[root@Wrk1 ~]# rm /home/rcronn/personal_appointments
+rm: remove regular file '/home/rcronn/personal_appointments'? y
+
+[root@Wrk1 ~]# chown cflynn /home/cflynn/welcome
+[root@Wrk1 ~]# chown cflynn /home/cflynn/team_directory
+[root@Wrk1 ~]# chgrp proj /home/cflynn/welcome
+[root@Wrk1 ~]# chgrp proj /home/cflynn/team_directory
+
+Tasks Completed Per Line Using linux commands in Terminal
+Lines 1-5 Locking User Account 
+Line 6 Copy files from /home/rcronn/project_prcc/welcome to /home/cflynn
+Line 7 Copy files from /home/rcronn/project_prcc/team_directory to /home/cflynn
+Line 8 Move directory from /home/rcronn/project_prcc to /home/mbrown
+Lines 9-10 remove file from user account 
+Lines 12-13 change file ownership 
+Lines 14-15 change file group ownership 
