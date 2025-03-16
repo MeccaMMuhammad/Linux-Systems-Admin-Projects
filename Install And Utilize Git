@@ -1,0 +1,22 @@
+[aciadmin@acialma ~]$ sudo dnf install git 
+[aciadmin@acialma Module_7]$ git init
+[aciadmin@acialma Module_7]$ git config --global user.name "aciadmin"
+[aciadmin@acialma Module_7]$ git config --global user.email "aciadmin@acidomain.com"
+[aciadmin@acialma Module_7]$ git add pfsense_update_dns_server.yml
+[aciadmin@acialma Module_7]$ git status
+[aciadmin@acialma Module_7]$ git commit -m "initial commit: Add pfsense_update_dns_server.yml playbook"
+[aciadmin@acialma Module_7]$ git log
+[aciadmin@acialma Module_7]$ rm pfsense_update_dns_server.yml
+
+Tasks Completed Per Line
+Line 1 Install git
+Line 2 Command to initialize a new Git repository within a directory, sets up necessary data structures and config files which allows version control to be applied directly to the files within that directory. 
+Line 3 Command sets the global Git config to associate the specified username with commits made across all repositories on the system
+Line 4 Sets the global Git config to associate the specified email address with commits made across all repositories on the system. 
+Line 5 Stages the specified file for inclusion in the next Git commit, maarking it as ready for tracking changes 
+Line 6 Provides info about the current state of the Git repository, showing any modified, untracked, or staged files and the branch's status. 
+Line 7 Records the staged changes in the Git repository along with a descriptive message summarizing the changes made in the commit
+Line 8 Displays a chronological history of commits in the Git repository, such as commit has,author,date and commit messages
+Line 9 Deletes/removes the specified file in the directory. The file is no longer needed as it is being tracked in the Git repository. 
+
+For visuals please view pdf file also included within this branch 😊!
