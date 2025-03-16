@@ -1,0 +1,8 @@
+root@Wrk1:~# ls -l /hr
+root@Wrk1:~# chown bcassini /hr/payroll 
+root@Wrk1:~# ls -l /hr
+
+Tasks Completed per line
+Line 1 shows the current ownership of all files in /hr
+Line 2 changes the current owner to bcassini for the /hr/payroll file
+Line 3 confirms changes 
