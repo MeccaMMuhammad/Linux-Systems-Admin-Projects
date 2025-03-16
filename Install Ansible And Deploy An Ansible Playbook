@@ -1,0 +1,20 @@
+[aciadmin@acialma ~]$ sudo dnf install epel-release -y
+[aciadmin@acialma ~]$ sudo dnf install ansible -y
+[aciadmin@acialma ~]$ ansible-galaxy collection install pfsensible.core
+[aciadmin@acialma ~]$ ssh admin@192.168.0.5
+[aciadmin@acialma ~]$ cd Module_7
+[aciadmin@acialma Module_7]$ ansible-playbook -i hosts.yml pfsense_update_dns_server.yml
+[aciadmin@acialma Module_7]$ ssh admin@192.168.0.5
+8 (Enter)
+[2.7.2-RELEASE][admin@pfsense.home.arpa]/root: cat /etc/resolv.conf
+
+Tasks Completed Per Line 
+Line 1 The epel-release package is the Extra Packages for Enterprise Linux (EPEL) repository configuration package. It provides additional software packages, such as Ansible, that are not included in the default repositories of Red Hat Enterprise Linus (RHEL) and its derivatives, such as AlmaLinux. 
+Line 2 Command to install ansible 
+Line 3 Pfsensible.core is and Ansible module that includes config options for pfSense
+Line 4 Since Ansible requires SSH connectivity. Manually connecting via SSH before an Ansible playbook deployment allows you to verify and accept the server's fingerprint. This ensures that subsequent automated Ansible connections are secure, preventing potential security risks associated with unrecognized or untrusted servers.
+Line 5 Changes the directory to Module_7 to deploy the Ansible playbook 
+Line 6 This command executes an Ansible playbook named pfsense_update_dns_server.yml on the hosts defined in the inventory file "hosts.yml" to configure DNS servers on ACIPFSENSE. In an enterprise environment, this playbook could streamline and automate an administrator's approach to managing DNS configurations across many hosts. 
+Line 7-8 Confirms the DNS server IP address has been changed to 8.8.8.8 by the Ansible playbook deployment. 
+
+For visuals please view the pdf file also included in this branch 😊!
