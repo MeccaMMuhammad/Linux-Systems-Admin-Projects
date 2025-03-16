@@ -1,0 +1,26 @@
+[aciadmin@acialma ~]$ mkdir file_encryption
+[aciadmin@acialma ~]$ cd file_encryption/
+[aciadmin@acialma file_encryption]$ echo "important stuff here" > myStuff.txt
+[aciadmin@acialma file_encryption]$ openssl -help
+[aciadmin@acialma file_encryption]$ openssl enc -aes-128-cbc -in myStuff.txt -out myEncStuff.txt
+*Enter and verify password
+[aciadmin@acialma file_encryption]$ ls
+[aciadmin@acialma file_encryption]$ cat myEncStuff.txt
+[aciadmin@acialma file_encryption]$ openssl enc -d -aes-128-cbc -in myEncStuff.txt -out myDecStuff.txt
+*Enter and verify password
+[aciadmin@acialma file_encryption]$ cat myDecStuff.txt
+
+Tasks Completed Per Line
+Line 1 Creates a directory file_encryption
+Line 2 Changes the directory to file_encryption/
+Line 3 Creates a file called myStuff.txt with the content "important stuff here". 
+Line 4 Shows a list of available commands for OPENSSL
+Line 5 AES-128CBC which is a symmetric encryption algorithm where data is divided into blocks of 128 bits and encrypted using a secret key and also uses CBC (Cipher Block Chaining) mode, each plaintext block is CORed with the previous ciphertext block before encryption which enhances security by introducing feedback into the encryption process
+Line 6 Enter and verify password for file 
+Line 7 Will verify that the file is created 
+Line 8 Verifies that the file is not readable with the concatenate command thus ensuring its confidentiality 
+Line 9 Decrypts data using OpenSSL, the -d option indicates decryption mode
+Line 10 Enter Password
+Line 11 Shows the decrypted file now being readable to authorized users who possess the correct key. 
+
+For visuals please view ppt which is on LinkedIn 😊!
