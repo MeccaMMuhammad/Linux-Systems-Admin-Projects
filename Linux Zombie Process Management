@@ -9,4 +9,4 @@ Line 1 Shows a detailed snapshot of all running processes (zombie processes will
 Lines 2-3 Kills all zombie processes by their PID
 Line 5 confirms zombie process kill (can also use ps aux | more) 
 
-For visuals please view portfolio ppt which is on my LinkedIn 😊!
+For visuals please view pdf file also included within this branch 😊!
