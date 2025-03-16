@@ -8,3 +8,5 @@ Tasks Completed Per Line
 Line 1 Shows a detailed snapshot of all running processes (zombie processes will have a STAT : Z)
 Lines 2-3 Kills all zombie processes by their PID
 Line 5 confirms zombie process kill (can also use ps aux | more) 
+
+For visuals please view portfolio ppt which is on my LinkedIn 😊!
