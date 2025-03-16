@@ -17,3 +17,5 @@ Line 5 Creates a directory named "my_encrypted_partition" in the "/mnt" director
 Line 6 Mounts the LUKS-encrypted partition, decrypted and accessible through the device mapper, to the directory "/mnt/my_encrypted_partition", allowing access to its contents
 Line 7 Displays information about block devices,including their UUIDs and file system types, /dev/sda4 will be listed as having a filesystem TYPE="crypto_LUKS"
 Line 8 Lists block devices and their associated filesystem types, provides information about the filesystems present on each block device. 
+
+For visuals please view ppt which is on my LinkedIn 😊!
