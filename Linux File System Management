@@ -1,0 +1,14 @@
+root@Wrk1:~# cd /
+root@Wrk1:~# ls -l 
+root@Wrk1:~# chmod o+rx /sales
+root@Wrk1:~# ls -l /sales
+root@Wrk1:~# chmod o+r /sales*
+root@Wrk1:~# ls -l /sales
+
+Tasks Completed Per Line
+Line 1 Takes you to the root of the system
+Line 2 Lists files,directories,permissions etc. 
+Line 3 Gives the other group r+x permissions in the /sales directory 
+Line 4 confirms the changes in the /sales directory from Line 3 
+Line 5 Gives the other group r permissions for all the documents in the /sales directory 
+Lines 6 confirms the changes from Line 5
