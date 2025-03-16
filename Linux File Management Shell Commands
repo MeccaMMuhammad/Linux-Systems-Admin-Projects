@@ -1,0 +1,27 @@
+wadams@Wrk1:~# ls -l
+wadams@Wrk1:~# rm old_myfile.txt
+rm: remove regular file 'old_myfile.txt'? y
+wadams@Wrk1:~# touch new_myfile.txt
+wadams@Wrk1:~# nano new_myfile.txt
+hello
+File Name to Write: new_myfile.txt (enter)
+Ctrl+X
+wadams@Wrk1:~# cat new_myfile.txt
+wadams@Wrk1:~# cp new_myfile.txt /home/wadams/practice
+wadams@Wrk1:~# cd practice
+wadams@Wrk1:/home/wadams/practice# mv new_myfile.txt final_myfile.txt
+
+Tasks Completed Per Line
+Line 1 Lists all contents in current directory 
+Line 2 Use the rm command to delete the old_myfile.txt file
+Line 3 Enter y to indicate yes to remove the file
+Line 4 Use the touch command to create the new_myfile.txt file
+Line 5 Use the nano command to add some text the new_myfile.txt file (can also use the "vi" command)
+Line 6 Text added to the new_myfile.txt file
+Line 7 hit enter to write text from line 6 to the new_myfile.txt file
+Line 8 Exit the nano screen
+Line 9 Use the cat command to view the file changes from Lines 5-7
+Line 10 Use the cp command to copy the new_myfile.txt file to the practice directory
+Line 11 changes the current directory to the practice directory 
+Line 12 Use the mv command to rename the new_myfile.txt file to final_myfile.txt
+* Use ls -l if you need to confirm changes after each step
