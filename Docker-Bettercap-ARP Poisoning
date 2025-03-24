@@ -1,0 +1,20 @@
+arp - a
+sudo docker run -it --privileged --net=host bettercap
+net.probe on 
+net.show
+net.probe off
+set arp.spoof.targets 192.168.0.3
+arp.spoof on 
+arp -a
+
+Tasks Completed Per Line
+Line 1 (Windows) Allows you to observe the MAC addresses associated with each IP address on the interface (192.168.0.3 for this example)
+Line 2 (Linux) Launches the Bettercap tool within a Docker container with elevated privileges and access to the host network stack. Allows bettercap to perform network scanning, ARP spoofing and other network attacks directly on the host system's network interfaces. Note: Docker is a containerixation engine that simplifies the process of creating,deploying and managing software applications by encapsulating them and their dependencies into lightweight, portable containers. 
+Line 3 Enables network discovery by actively probing and identifying active hosts on the network
+Note : use wireshark to observe the broadcast arp inquiries
+Line 4 Displays real-time list of hosts and devices currently detected on the network, along with relevant information such as MAC and IP addresses. 
+Line 5 Stops the net.probe process
+Line 6 Identifies the windows system as the machine whose MAC address will be spoofed in the ARP poisoning attack
+Line 7 Starts the arp spoof
+Note* Use wireshark to observe the spoofed ARP replies which result in ARP poisoning 
+Line 8 (Windows) Shows that there are two IP addresses which now share the same MAC address on the 192.168.0.3 interface which is the result of the Bettercap ARP poisoning attack.
