@@ -1,0 +1,61 @@
+Lab Steps and Commands
+1. Create the script /home/bob/filter.sh
+The first step in the lab was to create a shell script that would filter lines from a file based on specific keywords and save the filtered output to a new file.
+# Create a script called /home/bob/filter.sh
+nano /home/bob/filter.sh
+
+# Inside the script:
+#!/bin/bash
+# Step 1: Extract the appdata.tar.gz archive to a temporary directory
+mkdir -p /tmp/appdata
+tar -xzf /opt/appdata.tar.gz -C /tmp/appdata
+
+# Step 2: Filter the lines containing the word "processed" and save to filtered.txt
+grep -ri "processed" /tmp/appdata/appdata > /home/bob/filtered.txt
+
+# Step 3: Clean up the temporary directory (optional)
+rm -rf /tmp/appdata
+echo "Filtering complete. Output saved to /home/bob/filtered.txt"
+2. Working with Permissions and Ownership
+In this task, we worked on setting file permissions and ownerships for various files, especially for the /opt/appdata.tar.gz archive file.
+# Change the owner of the file to "bob"
+sudo chown bob:bob /opt/appdata.tar.gz
+
+# Change file permissions to read-only for owner and group, no permissions for others
+sudo chmod 440 /opt/appdata.tar.gz
+3. Creating and Extracting Archives
+We created a .tar.gz archive of a directory and extracted it to a temporary location.
+# Create a tar.gz archive of the appdata directory
+sudo tar -czf /opt/appdata.tar.gz -C /opt appdata
+
+# Extract the archive to a temporary directory
+sudo mkdir -p /tmp/appdata
+sudo tar -xzf /opt/appdata.tar.gz -C /tmp/appdata
+4. Filtering Data and Storing Results
+Next, we used the grep command to search for specific data (in this case, lines containing the word "processed") inside extracted files and stored the results in a text file.
+# Search for "processed" in the extracted files and save to filtered.txt
+sudo grep -ri "processed" /tmp/appdata/appdata > /home/bob/filtered.txt
+5. Troubleshooting File System Loops
+While performing directory searches, we encountered file system loop issues. We handled them by excluding system directories such as /sys, /proc, and /dev during the search.
+# Use find with exclusions to avoid system directories
+sudo find / -ignore_readdir_race -xdev -type d -name "appdata" -not -path "/sys/*" -not -path "/proc/*" -not -path "/dev/*"
+6. Creating Symbolic Links
+To manage file access, we created symbolic links pointing to the necessary files.
+# Create a symbolic link for the appdata.tar.gz file
+sudo ln -s /opt/appdata.tar.gz /home/bob/appdata.tar.gz
+7. Additional Commands and Troubleshooting
+While working through the tasks, we encountered and solved various permission issues and file system loops.
+# List the contents of a tar.gz archive
+sudo tar -tvf /opt/appdata.tar.gz
+
+# Check file types (useful for troubleshooting)
+file /tmp/appdata/appdata/somefile.txt
+
+# View contents of a file to confirm changes
+sudo cat /tmp/appdata/appdata/somefile.txt
+8. Cleaning Up
+After the tasks were complete, we cleaned up temporary files to keep the system organized.
+# Remove extracted files from the temporary directory
+sudo rm -rf /tmp/appdata
+Conclusion
+This lab provided me with hands-on experience in managing file systems, working with tar archives, filtering data with shell commands, and troubleshooting common Linux issues. I’m excited to continue developing my system administration skills and applying them to real-world scenarios.
