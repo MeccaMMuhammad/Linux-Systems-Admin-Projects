@@ -1,0 +1,21 @@
+## ✅ Outcome
+- Successfully verified digital signatures.
+- Observed failure on digest modification, demonstrating the integrity check.
+
+## 📚 Commands Reference
+
+```bash
+# Generate Private Key (Alice)
+openssl genpkey -algorithm RSA -out alice_privatekey.pem
+
+# Generate Public Key (Alice)
+openssl rsa -in alice_privatekey.pem -out alice_publickey.pem -pubout -outform PEM
+
+# Create Digest
+echo "This is Alice's digest." > alice_digest.txt
+
+# Create Signature
+openssl dgst -sha256 -sign alice_privatekey.pem -out alice_signature.bin alice_digest.txt
+
+# Verify Signature (Bob)
+openssl dgst -sha256 -verify alice_publickey.pem -signature alice_signature.bin alice_digest.txt
