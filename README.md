@@ -1,7 +1,21 @@
-# Linux-Systems-Admin-Projects
-Hi My Name Is Mecca! 
-I Am An Aspiring Linux Systems Administrator!
-Here Are Some Linux Systems Administrator Specific Projects Completed By Me !
-The Code For The Completed Projects Are Here In My GitHub Separated In Branches !
-If You Would Like To See A More Visual Representation Please Visit My LinkedIn Where I Have Uploaded My Current Linux Systems Admin Portfolio!
-Thanks 😊!
+## 📌 Objectives
+- Generate a private key and CSR
+- Simulate a Certificate Authority
+- Approve and sign the CSR
+- Return a signed certificate to the requester
+
+## 🛠 Tools Used
+- AlmaLinux 9.1
+- OpenSSL
+- Bash (Terminal)
+
+## 🧑‍💻 Lab Overview
+
+### SecPlusLLC:
+1. Generate private key and CSR using OpenSSL
+2. Submit CSR to CA (simulated by directory transfer)
+
+### Certificate Authority (CA):
+1. Generate private key
+2. Approve CSR and sign it to generate a certificate
+3. Return the signed certificate to SecPlusLLC
