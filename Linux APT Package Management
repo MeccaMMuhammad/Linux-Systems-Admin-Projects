@@ -1,0 +1,39 @@
+```bash
+#!/bin/bash
+
+# Step 1: Ensure APT is installed
+echo "Checking APT version..."
+apt --version
+
+# Step 2: Install Suricata
+echo "Installing Suricata..."
+sudo apt update
+sudo apt install suricata
+
+# Verify Suricata installation
+suricata --version
+
+# Step 3: Uninstall Suricata
+echo "Uninstalling Suricata..."
+sudo apt remove suricata
+
+# Verify Suricata uninstallation
+suricata --version
+
+# Step 4: Install tcpdump
+echo "Installing tcpdump..."
+sudo apt install tcpdump
+
+# Verify tcpdump installation
+tcpdump --version
+
+# Step 5: List installed applications
+echo "Listing installed applications..."
+apt list --installed
+
+# Step 6: Reinstall Suricata
+echo "Reinstalling Suricata..."
+sudo apt install suricata
+
+# Verify installation
+apt list --installed
