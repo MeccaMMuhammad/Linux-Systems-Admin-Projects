@@ -1,0 +1,10 @@
+# Nmap scan to discover open ports
+nmap -Pn 192.168.0.2
+
+# Aggressive scan for ports 80, 443, and 3306
+nmap -Pn -A -p 80,443,3306 192.168.0.2
+
+# Re-run Nmap to ensure the ports are closed
+nmap -Pn 192.168.0.2
+Conclusion:
+By closing unnecessary open ports, we reduce the attack surface and improve the security posture of the system. This exercise helped me understand the importance of port management and how to use Nmap for vulnerability scanning.
