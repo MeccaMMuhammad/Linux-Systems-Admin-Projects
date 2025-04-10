@@ -1,7 +1,29 @@
-# Linux-Systems-Admin-Projects
-Hi My Name Is Mecca! 
-I Am An Aspiring Linux Systems Administrator!
-Here Are Some Linux Systems Administrator Specific Projects Completed By Me !
-The Code For The Completed Projects Are Here In My GitHub Separated In Branches !
-If You Would Like To See A More Visual Representation Please Visit My LinkedIn Where I Have Uploaded My Current Linux Systems Admin Portfolio!
-Thanks 😊!
+# Linux APT Package Management
+
+This repository documents my learning experience with the APT package manager in Linux. I used this to manage applications like **Suricata** and **tcpdump** for network security. This includes installation, uninstallation, and verification of the applications.
+
+## Lab Activity Overview
+
+In this lab, I learned how to install and uninstall applications on a Debian-based Linux distribution using **APT**. This skill is crucial for a security analyst, as managing system applications and ensuring they are properly installed and configured is a key responsibility. 
+
+## Key Tasks Covered
+
+1. **Ensure APT is installed**
+2. **Install and uninstall Suricata**
+3. **Install tcpdump**
+4. **List installed applications**
+5. **Reinstall Suricata**
+
+## Prerequisites
+
+- A Debian-based Linux distribution (Ubuntu, Kali, etc.)
+- Access to a terminal or Bash shell
+- Root privileges (sudo) for installing/uninstalling applications
+
+## Step-by-Step Code and Commands
+
+### 1. **Ensure APT is Installed**
+   To verify that **APT** is installed, I ran the following command:
+
+   ```bash
+   apt --version
