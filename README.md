@@ -1,7 +1,6 @@
 # Linux-Systems-Admin-Projects
-Hi My Name Is Mecca! 
-I Am An Aspiring Linux Systems Administrator!
-Here Are Some Linux Systems Administrator Specific Projects Completed By Me !
-The Code For The Completed Projects Are Here In My GitHub Separated In Branches !
-If You Would Like To See A More Visual Representation Please Visit My LinkedIn Where I Have Uploaded My Current Linux Systems Admin Portfolio!
-Thanks 😊!
+This branch documents the step-by-step process and key takeaways from a hands-on cybersecurity lab that explores two foundational vulnerabilities: **LM hash extraction** and **DNS zone transfers**.
+
+> ✅ Devices Used:
+- **ACIDC01** – Windows Server 2022 (Domain Controller)
+- **ACIKALI** – Kali Purple 2023.1 (Linux Workstation)
