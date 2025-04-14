@@ -1,0 +1,87 @@
+## ⚡ Exercise 1: Identify LM Hash Vulnerabilities
+
+### 🛠️ Objective:
+Simulate legacy password storage risks and demonstrate how to extract and crack LM hashes using Linux tools.
+
+### 🧪 Steps:
+1. On **ACIDC01**:
+   - Enabled LM hash storage in Group Policy:
+     ```
+     Computer Configuration ➝ Windows Settings ➝ Security Settings ➝ Local Policies ➝ Security Options ➝ Network Security: Do not store LAN Manager hash value ➝ Set to "Disabled"
+     ```
+   - Forced policy update with:
+     ```
+     gpupdate /force
+     ```
+
+2. Verified LM hash generation by creating a test account and setting a weak password.
+
+3. On **ACIKALI**, used **Impacket’s secretsdump.py**:
+   ```bash
+   sudo secretsdump.py aci.local/Administrator:'Passw0rd'@192.168.0.1
+Extracted the LM hash and cracked it using John the Ripper:
+
+
+john --format=LM hash.txt
+
+🌐 Exercise 2: Identify DNS Zone Transfer Vulnerabilities
+
+🛠️ Objective:
+Create a DNS record, test DNS zone transfer security, then intentionally misconfigure the DNS server to demonstrate how data leakage can occur.
+
+🧪 Steps:
+On ACIDC01:
+
+Opened DNS Manager ➝ Forward Lookup Zones ➝ aciplab.com ➝ Right-click ➝ New Alias (CNAME)
+
+Alias: testing.aciplab.com
+
+FQDN: aciplabtestingserver.com
+
+On ACIKALI, attempted a zone transfer:
+
+
+sudo dig axfr @192.168.0.1 aciplab.com
+
+Result: Transfer failed (expected behavior)
+
+Back on ACIDC01:
+
+DNS Manager ➝ Right-click aciplab.com ➝ Properties ➝ Zone Transfers ➝ Enable "Allow zone transfers" to any server
+
+Retested on ACIKALI:
+
+sudo dig axfr @192.168.0.1 aciplab.com
+Result: Transfer succeeded
+
+Observed: SOA, CNAME, and other DNS records
+
+🎯 Learning Outcomes
+
+✅ Extract and crack LM hashes using Linux tools
+
+✅ Configure DNS Servers and create resource records (CNAME)
+
+✅ Test and secure DNS against zone transfer vulnerabilities
+
+✅ Gain comfort with Impacket, John the Ripper, and dig
+
+👨‍💻 Relevance to My Linux SysAdmin Journey
+
+This lab bridged Windows and Linux environments, helping reinforce how Linux tools can be used to:
+
+Diagnose security issues on Windows systems
+
+Understand DNS configurations and misconfigurations
+
+Strengthen cross-platform knowledge, which is vital in hybrid enterprise environments
+
+Practice real-world Linux-based troubleshooting and auditing techniques
+
+🧰 Tools Used
+Impacket
+
+John the Ripper
+
+dig command (Linux DNS utility)
+
