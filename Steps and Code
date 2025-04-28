@@ -1,0 +1,87 @@
+Lab Exercise: Create a Linux Automation Script
+
+Step-by-Step Instructions
+
+1. Create Dummy Files
+Open the Terminal and create multiple text files inside the Documents folder:
+
+touch Documents/acidoc{1..10}
+✅ Result: 10 new files named acidoc1, acidoc2, ..., acidoc10 inside the Documents folder.
+
+2. Verify Files
+List the newly created files:
+
+
+ls -l Documents/
+✅ Result: Displays the list of newly created files.
+
+3. Create a Backup Directory
+Make a directory where backups will be stored:
+
+mkdir Backup
+✅ Result: New Backup folder created in the home directory.
+
+4. Create the Script File
+Create a new shell script file:
+
+
+touch acibackup.sh
+✅ Result: Empty acibackup.sh file created.
+
+5. Edit the Script
+Open the script in Vim:
+
+
+vim acibackup.sh
+Press i to enter insert mode, and add the following code:
+
+
+#!/bin/bash
+tar cfv /home/aciadmin/Backup/acibackup.tar /home/aciadmin/Documents
+#!/bin/bash — Declares the script as a bash script.
+
+tar cfv — Creates a compressed .tar archive of the Documents folder into the Backup directory.
+
+Save and exit:
+
+Press Esc
+
+Type :wq
+
+Press Enter
+
+✅ Result: Script saved with backup logic.
+
+6. Make the Script Executable
+Change permissions to make the script executable:
+
+
+chmod +x acibackup.sh
+✅ Result: acibackup.sh is now executable.
+
+7. Verify Script Permissions
+Check script permissions:
+
+
+ls -l acibackup.sh
+✅ Result: You should see an executable flag -rwxr-xr-x next to your script file.
+
+8. Execute the Script
+Run the script to perform the backup:
+
+
+./acibackup.sh
+✅ Result: A new archive file acibackup.tar will be created inside the Backup directory containing all files from the Documents folder.
+
+Final Notes
+The script can be scheduled to run automatically using cron jobs for regular backups.
+
+Proper file permissions and secure password management should be implemented in production environments.
+
+Automation like this reduces manual workload, increases efficiency, and strengthens disaster recovery processes.
+
+Why This Matters
+Mastering basic scripting and automation is critical for Linux Systems Administration and is also a key skill for cybersecurity practices (as emphasized in CompTIA Security+ objectives). Automating tasks like backups ensures system reliability and integrity while freeing up administrators to focus on higher-level operations.
+
+
+Linux Bash Automation Scripting Backup SysAdmin CompTIA Security+ Linux Administrator Beginner Project
