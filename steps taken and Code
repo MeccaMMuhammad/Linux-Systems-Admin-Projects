@@ -1,0 +1,125 @@
+✅ Step 1: Check the CoreDNS Deployment Status
+Check the status of CoreDNS pods:
+
+kubectl get pods -n kube-system
+Look for CoreDNS pods in the "CrashLoopBackOff" or "Pending" state. This could indicate networking issues or apiserver problems.
+
+✅ Step 2: Check kube-apiserver Status
+Check if the kube-apiserver is running:
+
+sudo docker ps | grep kube-apiserver
+If using containerd:
+
+sudo crictl ps | grep kube-apiserver
+If the kube-apiserver is not running, check its logs:
+
+sudo journalctl -u kubelet -f
+or
+
+sudo docker logs <kube-apiserver-container-id>
+
+✅ Step 3: Validate kube-apiserver Health
+Check if the kube-apiserver is healthy:
+
+curl -k https://localhost:6443/healthz
+If it returns ok, it’s healthy.
+
+✅ Step 4: Confirm kubeconfig and Cluster Access
+Check your kubeconfig:
+
+kubectl config view --kubeconfig=/root/.kube/config
+kubectl config current-context
+Test cluster access:
+
+kubectl get nodes --kubeconfig=/root/.kube/config
+
+✅ Step 5: Restart kubelet and Container Runtime (if needed)
+Restart services if needed:
+
+sudo systemctl restart kubelet
+sudo systemctl restart docker   # or containerd
+
+✅ Step 6: Check if CoreDNS Image is Pulling Correctly
+Make sure the CoreDNS image is available:
+
+kubectl describe pod <coredns-pod-name> -n kube-system
+Check for failed image pulls or networking errors. You can manually pull the image:
+
+docker pull registry.k8s.io/coredns/coredns:v1.8.6
+Or with containerd:
+
+ctr images pull registry.k8s.io/coredns/coredns:v1.8.6
+
+✅ Step 7: Restart CoreDNS (if kube-apiserver is healthy)
+If kube-apiserver is working, restart CoreDNS:
+
+kubectl rollout restart deployment coredns -n kube-system
+
+Issue with Connection Refused to API Server
+When you ran kubectl get pods -n kube-system, you got:
+
+arduino
+Copy
+Edit
+E0429 15:49:26.784714    9170 memcache.go:265] couldn't get current server API group list: Get "https://controlplane:6433/api?timeout=32s": dial tcp 192.168.239.33:6433: connect: connection refused
+This error indicates an issue connecting to the API server. It could be caused by a wrong port (should be 6443) or a hostname issue.
+
+✅ Solution: Confirm Correct Port
+Check the kubeconfig file:
+
+grep server /root/.kube/config
+Ensure it points to port 6443:
+
+server: https://<hostname>:6443
+If not, change it to 6443:
+
+
+vi /root/.kube/config
+Issue with Container Runtime (Docker/Containerd)
+If docker isn't installed or crictl ps returns nothing, the container runtime might be misconfigured. You verified that containerd is running:
+
+sudo systemctl status containerd
+✅ Solution: Verify the Container Runtime
+If containerd is running, check for kube-apiserver pods:
+
+
+sudo crictl ps -a
+If kube-apiserver isn't listed, check the static pod manifest in:
+
+ls /etc/kubernetes/manifests/
+cat /etc/kubernetes/manifests/kube-apiserver.yaml
+Issue with Kube-Apiserver Failing to Start
+Your kube-apiserver container was exiting due to:
+
+
+open /etc/kubernetes/pki/ca-authority.crt: no such file or directory
+This indicates a missing certificate file.
+
+✅ Solution: Fix the Kube-Apiserver Manifest
+Edit the kube-apiserver manifest:
+
+
+sudo nano /etc/kubernetes/manifests/kube-apiserver.yaml
+Update the --client-ca-file flag to use the correct certificate path:
+
+
+--client-ca-file=/etc/kubernetes/pki/ca.crt
+Once you save the file, kubelet will attempt to restart the kube-apiserver.
+
+✅ Step 8: Check CoreDNS Image Version and Update if Needed
+Check CoreDNS version:
+
+
+kubectl -n kube-system get deploy coredns -o=jsonpath="{.spec.template.spec.containers[*].image}"
+To update CoreDNS, run:
+
+
+kubectl -n kube-system edit deployment coredns
+Change the image version to a newer one if necessary:
+
+
+image: registry.k8s.io/coredns/coredns:v1.10.1
+Then check the rollout:
+
+
+kubectl -n kube-system rollout status deployment/coredns
